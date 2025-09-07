@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bjvnda26vq7w2" path="res://Art/player_forward.png" id="1_rpqav"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kyqiw"]
-size = Vector2(67, 135)
+size = Vector2(77, 130)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_kyqiw")
@@ -16,5 +16,9 @@ position = Vector2(79, 79)
 texture = ExtResource("1_rpqav")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(81.5, 81.5)
+position = Vector2(74.5, 79)
 shape = SubResource("RectangleShape2D_kyqiw")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
