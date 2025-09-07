@@ -6,8 +6,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kyqiw"]
 size = Vector2(67, 135)
 
-[node name="Player" type="Area2D"]
+[node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_kyqiw")
+speed = 300
+jump_speed = -400
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(79, 79)

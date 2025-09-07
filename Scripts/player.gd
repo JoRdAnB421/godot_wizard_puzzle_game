@@ -1,27 +1,20 @@
-extends Area2D
+extends CharacterBody2D
 
-@export var speed = 400
-var screen_size # size of game window 
+@export var speed = 10
+@export var jump_speed = -40
 
+# get the grvaity from the scene
+var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-func _ready() -> void:
-	screen_size = get_viewport_rect().size
+func _physics_process(delta: float) -> void:
+	# Add gravity
+	velocity.y += gravity*delta
 
-
-func _process(delta: float) -> void:
-	var velocity = Vector2.ZERO
-	
-	if Input.is_action_pressed("move_right"):
-		velocity.x += 1
-		print("moving right")
-	elif Input.is_action_pressed("move_left"):
-		velocity.x -= 1
-	
-	if Input.is_action_just_pressed("jump"):
-		position.y-=5
-
-	if velocity.length()>0:
-		velocity = velocity.normalized() * speed
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		velocity.y = jump_speed
 		
-	position += velocity * delta
-	position = position.clamp(Vector2.ZERO, screen_size)
+	# Get input direction
+	var direction = Input.get_axis("move_left", "move_right")
+	velocity.x = direction*speed
+
+	move_and_slide()
