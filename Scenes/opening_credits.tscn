@@ -1,0 +1,87 @@
+[gd_scene load_steps=7 format=3 uid="uid://bhqwwghvco8r7"]
+
+[ext_resource type="Texture2D" uid="uid://bi3koffbgf15w" path="res://Art/logos/new_godot_logo_black.png" id="1_eho6m"]
+[ext_resource type="Script" uid="uid://b8a37q25l0xjw" path="res://Scripts/opening_credits.gd" id="1_x5go6"]
+[ext_resource type="Texture2D" uid="uid://usmbf6svorc2" path="res://Art/logos/jjgames_logo_white_big.png" id="3_ujphb"]
+
+[sub_resource type="Animation" id="Animation_x5go6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../JjgamesLogoWhiteBig:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_eho6m"]
+resource_name = "godot_logo_fadein"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../JjgamesLogoWhiteBig:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(5, 7.06667, 9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ujphb"]
+_data = {
+&"RESET": SubResource("Animation_x5go6"),
+&"godot_logo_fadein": SubResource("Animation_eho6m")
+}
+
+[node name="Node2D" type="Control"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_x5go6")
+
+[node name="NewGodotLogoBlack" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(559, 328)
+texture = ExtResource("1_eho6m")
+
+[node name="JjgamesLogoWhiteBig" type="Sprite2D" parent="."]
+position = Vector2(580, 336)
+texture = ExtResource("3_ujphb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../NewGodotLogoBlack")
+libraries = {
+&"": SubResource("AnimationLibrary_ujphb")
+}
