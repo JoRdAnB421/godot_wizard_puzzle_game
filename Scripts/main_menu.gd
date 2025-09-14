@@ -7,13 +7,17 @@ extends PanelContainer
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 func _ready() -> void:
+	# connecting button signals
 	continue_on.connect("meta_clicked", _on_meta_clicked)
 	new_game.connect("meta_clicked", _on_meta_clicked)
 	options.connect("meta_clicked", _on_meta_clicked)
 	controls.connect("meta_clicked", _on_meta_clicked)
-
-	animation_player.play("fade_in")
 	
+	animation_player.connect("animation_finished", remove_cover)
+	animation_player.play("fade_in")
+
+func remove_cover(sig):
+	animation_player.get_children()[0].queue_free()
 func _on_meta_clicked(sig) -> void:
 	match sig:
 		"Continue":
