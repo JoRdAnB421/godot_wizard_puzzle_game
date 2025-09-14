@@ -39,6 +39,8 @@ func _process(_delta: float) -> void:
 func rotate_room() -> void:
 	"""Rotate the Wizard and then set reset gravity"""
 	rotation += PI/2 # Rotates the player sprite
+	
+	# Rotation for the gravity veector always pi/2
 	var rot_matrix = [Vector2(0,-1), 
 					  Vector2(1,0)
 					 ]

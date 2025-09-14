@@ -1,11 +1,11 @@
 [gd_scene load_steps=6 format=4 uid="uid://dhbdk4326770t"]
 
-[ext_resource type="PackedScene" uid="uid://s8ocfyx8kqrl" path="res://Scenes/player.tscn" id="1_52fb6"]
-[ext_resource type="Texture2D" uid="uid://cdsuuj1j1p1wj" path="res://Tilemaps/roguelikeDungeon_transparent.png" id="2_6l7je"]
-[ext_resource type="PackedScene" uid="uid://b3jg7ktpfx6yx" path="res://Scenes/box.tscn" id="3_jv6wh"]
+[ext_resource type="PackedScene" uid="uid://s8ocfyx8kqrl" path="res://Scenes/player.tscn" id="1_c5erv"]
+[ext_resource type="Texture2D" uid="uid://cdsuuj1j1p1wj" path="res://Tilemaps/roguelikeDungeon_transparent.png" id="2_lyd6k"]
+[ext_resource type="PackedScene" uid="uid://b3jg7ktpfx6yx" path="res://Scenes/box.tscn" id="3_y4dr7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jv6wh"]
-texture = ExtResource("2_6l7je")
+texture = ExtResource("2_lyd6k")
 separation = Vector2i(1, 1)
 8:0/0 = 0
 8:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -236,10 +236,10 @@ separation = Vector2i(1, 1)
 physics_layer_0/collision_layer = 2
 sources/0 = SubResource("TileSetAtlasSource_jv6wh")
 
-[node name="Main Scene" type="Node2D"]
+[node name="Level1" type="Node2D"]
 metadata/gravity_vec = Vector2(0, 1)
 
-[node name="Player" parent="." instance=ExtResource("1_52fb6")]
+[node name="Player" parent="." instance=ExtResource("1_c5erv")]
 position = Vector2(571, 316)
 collision_mask = 2
 
@@ -248,7 +248,7 @@ tile_map_data = PackedByteArray("AAAPAA8AAAAOAAEAAAAzAB4AAAAOAAEAAAAPAAcAAAAOAAE
 tile_set = SubResource("TileSet_x6ack")
 use_kinematic_bodies = true
 
-[node name="Box" parent="." instance=ExtResource("3_jv6wh")]
+[node name="Box" parent="." instance=ExtResource("3_y4dr7")]
 position = Vector2(726, 216)
 collision_layer = 2
 collision_mask = 3
