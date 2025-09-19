@@ -16,8 +16,9 @@ func _ready() -> void:
 	animation_player.connect("animation_finished", remove_cover)
 	animation_player.play("fade_in")
 
-func remove_cover(sig):
+func remove_cover(_sig) -> void:
 	animation_player.get_children()[0].queue_free()
+	
 func _on_meta_clicked(sig) -> void:
 	match sig:
 		"Continue":
