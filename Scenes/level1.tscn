@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=4 uid="uid://dhbdk4326770t"]
+[gd_scene load_steps=7 format=4 uid="uid://dhbdk4326770t"]
 
 [ext_resource type="PackedScene" uid="uid://s8ocfyx8kqrl" path="res://Scenes/player.tscn" id="1_c5erv"]
 [ext_resource type="Texture2D" uid="uid://cdsuuj1j1p1wj" path="res://Tilemaps/roguelikeDungeon_transparent.png" id="2_lyd6k"]
 [ext_resource type="PackedScene" uid="uid://b3jg7ktpfx6yx" path="res://Scenes/box.tscn" id="3_y4dr7"]
+[ext_resource type="PackedScene" uid="uid://cr0b1w0k5dfe2" path="res://Scenes/UI.tscn" id="4_lyd6k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jv6wh"]
 texture = ExtResource("2_lyd6k")
@@ -252,3 +253,5 @@ use_kinematic_bodies = true
 position = Vector2(726, 216)
 collision_layer = 2
 collision_mask = 3
+
+[node name="UI" parent="." instance=ExtResource("4_lyd6k")]
