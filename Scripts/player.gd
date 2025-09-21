@@ -3,7 +3,7 @@ extends CharacterBody2D
 @export var speed = 10
 @export var jump_speed = -40
 
-@onready var main_scene: Node2D = $".."
+@onready var main_scene: Control = $".."
 @onready var tile_map_layer: TileMapLayer = $"../TileMapLayer"
 @onready var box: CharacterBody2D = $"../Box"
 
@@ -33,9 +33,16 @@ func _physics_process(delta: float) -> void:
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("cast_spell"):
-		rotate_room()
+		get_tree().paused=true
+		new_rotate_room()
+		get_tree().paused=false
 
-
+func new_rotate_room() -> void:
+	"""Rotate the level control node and reset wizards rotation"""
+	main_scene.rotation += PI/2
+	rotation -= PI/2 # Reset the wizards rotation	
+	
+	
 func rotate_room() -> void:
 	"""Rotate the Wizard and then set reset gravity"""
 	rotation += PI/2 # Rotates the player sprite
