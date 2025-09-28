@@ -1,4 +1,4 @@
-@tool
+#@tool
 extends Control
 
 const SPRITE_SIZE = Vector2(56,56)
@@ -10,7 +10,12 @@ const SPRITE_SIZE = Vector2(56,56)
 @export var inner_radii : int = 64
 @export var line_width  : int = 4
 @export var options : Array[SpellOption]
+var font
 
+func _ready() -> void:
+	options = PlayerState._get_known_spells()
+	font = get_theme_default_font()
+	print(font)
 
 func _draw() -> void:
 	var offset = SPRITE_SIZE / -2
@@ -25,18 +30,12 @@ func _draw() -> void:
 			var rads = TAU * i /((len(options)-1))
 			var point = Vector2.from_angle(rads)
 			draw_line(
-				point*inner_radii,
+				Vector2(0,0),
 				point*outer_radii,
 				line_color,
 				line_width,
 				true
 			)
-
-	draw_texture_rect_region(
-		options[0].atlas,
-		Rect2(offset, SPRITE_SIZE),
-		options[0].region
-	)
 	
 	for j in range(1, len(options)):
 		var start_rads = (TAU * (j-1)) / (len(options)-1)
@@ -51,8 +50,12 @@ func _draw() -> void:
 			Rect2(draw_pos, SPRITE_SIZE),
 			options[j].region
 		)
-		
-		## ADD a draw_string here
+			
+		var string_pos = inner_radii / 2.0 * Vector2.from_angle(mid_rad)
+		draw_string(
+			font,
+			string_pos,
+			str(j), 0 as HorizontalAlignment, -1, 16)
 		
 		
 func _process(_delta: float) -> void:
