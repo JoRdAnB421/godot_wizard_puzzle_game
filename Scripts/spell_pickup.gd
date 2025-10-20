@@ -12,5 +12,4 @@ func add_spell(_sig) -> void:
 	fire_spell.region = Rect2(180.0, 0.0, 76.0, 122.5)
 	
 	PlayerState.known_spells.append(fire_spell)
-	
-	print("GOT FIREBALL!!")
+	queue_free()

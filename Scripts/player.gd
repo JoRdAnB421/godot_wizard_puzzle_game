@@ -3,10 +3,6 @@ extends CharacterBody2D
 @export var speed = 10
 @export var jump_speed = -40
 
-@onready var main_scene: Control = $".."
-@onready var tile_map_layer: TileMapLayer = $"../TileMapLayer"
-@onready var box: CharacterBody2D = $"../Box"
-
 # get the gravity from the project Settings
 @onready var gravity_val = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var gravity_vec = 	get_parent().get_meta("gravity_vec")
@@ -33,26 +29,9 @@ func _physics_process(delta: float) -> void:
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("cast_spell"):
-		get_tree().paused=true
-		new_rotate_room()
-		get_tree().paused=false
+		PlayerState.cast_spell(1)
+		
+		
 
-func new_rotate_room() -> void:
-	"""Rotate the level control node and reset wizards rotation"""
-	main_scene.rotation += PI/2
-	rotation -= PI/2 # Reset the wizards rotation	
+
 	
-	
-func rotate_room() -> void:
-	"""Rotate the Wizard and then set reset gravity"""
-	rotation += PI/2 # Rotates the player sprite
-	
-	# Rotation for the gravity veector always pi/2
-	var rot_matrix = [Vector2(0,-1), 
-					  Vector2(1,0)
-					 ]
-	var new_gravity_vec = Vector2(gravity_vec.dot(rot_matrix[0]),
-							  	  gravity_vec.dot(rot_matrix[1])
-								 ).round()
-	get_parent().set_meta("gravity_vec", new_gravity_vec)
-	up_direction = -new_gravity_vec

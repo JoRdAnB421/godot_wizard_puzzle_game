@@ -5,7 +5,7 @@ extends CharacterBody2D
 @onready var gravity_vec = get_parent().get_meta("gravity_vec")
 
 func _physics_process(delta: float) -> void:
-	gravity_vec = get_parent().get_meta("gravity_vec")
+	gravity_vec = get_parent().get_parent().get_meta("gravity_vec")
 	velocity += gravity_val*gravity_vec*delta
 	
 	move_and_slide()

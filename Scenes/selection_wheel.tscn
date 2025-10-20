@@ -1,34 +1,23 @@
-[gd_scene load_steps=8 format=3 uid="uid://d1c4cn10j8xw1"]
+[gd_scene load_steps=6 format=3 uid="uid://d1c4cn10j8xw1"]
 
 [ext_resource type="Script" uid="uid://bg1ku2wlxhokl" path="res://Scripts/selection_wheel.gd" id="1_w8kca"]
 [ext_resource type="Script" uid="uid://bwjw4y67581ke" path="res://Scripts/spell_options.gd" id="2_5eg7p"]
 [ext_resource type="Texture2D" uid="uid://c7a73nioscel4" path="res://Art/spell_symbols.png" id="3_l5p0e"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_a61fs"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5p0e"]
 atlas = ExtResource("3_l5p0e")
-region = Rect2(0, 0, 32, 32)
+region = Rect2(85, 22.5, 84, 84)
 script = ExtResource("2_5eg7p")
-name = "None"
+name = ""
+id = 1
 metadata/_custom_type_script = "uid://bwjw4y67581ke"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hux7u"]
 atlas = ExtResource("3_l5p0e")
-region = Rect2(0, 30, 70, 70)
+region = Rect2(10, 22.5, 77, 79)
 script = ExtResource("2_5eg7p")
-name = "Rotation"
-metadata/_custom_type_script = "uid://bwjw4y67581ke"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_l5p0e"]
-atlas = ExtResource("3_l5p0e")
-region = Rect2(84, 15, 70, 115)
-script = ExtResource("2_5eg7p")
-name = "Flipper"
-metadata/_custom_type_script = "uid://bwjw4y67581ke"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ull34"]
-atlas = ExtResource("3_l5p0e")
-region = Rect2(180, 0, 76, 122.5)
-script = ExtResource("2_5eg7p")
+name = ""
+id = 2
 metadata/_custom_type_script = "uid://bwjw4y67581ke"
 
 [node name="SelectionWheel" type="Control"]
@@ -43,8 +32,9 @@ offset_right = -451.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_w8kca")
-bkg_color = Color(0.1728327, 0.17283267, 0.17283267, 1)
-line_color = Color(0.96035105, 0.96035105, 0.96035093, 1)
+bkg_color = Color(0.172833, 0.172833, 0.172833, 1)
+line_color = Color(0.960351, 0.960351, 0.960351, 1)
 outer_radii = 100
-inner_radii = 16
-options = Array[ExtResource("2_5eg7p")]([SubResource("AtlasTexture_a61fs"), SubResource("AtlasTexture_hux7u"), SubResource("AtlasTexture_l5p0e"), SubResource("AtlasTexture_ull34")])
+inner_radii = 10
+line_width = 1
+options = Array[ExtResource("2_5eg7p")]([SubResource("AtlasTexture_l5p0e"), SubResource("AtlasTexture_hux7u")])
