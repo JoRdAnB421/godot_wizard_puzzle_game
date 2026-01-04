@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhvecj144jji0"]
+
+[ext_resource type="Script" uid="uid://d1v44mrg6k4px" path="res://Scripts/hotbar.gd" id="1_w22v5"]
+
+[node name="Hotbar" type="VBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_w22v5")

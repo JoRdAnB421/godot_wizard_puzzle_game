@@ -1,34 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://cr0b1w0k5dfe2"]
+[gd_scene load_steps=2 format=3 uid="uid://cr0b1w0k5dfe2"]
 
-[ext_resource type="PackedScene" uid="uid://d1c4cn10j8xw1" path="res://Scenes/selection_wheel.tscn" id="1_w371h"]
-[ext_resource type="Script" uid="uid://bwjw4y67581ke" path="res://Scripts/spell_options.gd" id="2_nxvpl"]
-[ext_resource type="Texture2D" uid="uid://c7a73nioscel4" path="res://Art/spell_symbols.png" id="3_dewlx"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hfhsn"]
-atlas = ExtResource("3_dewlx")
-region = Rect2(85, 22.5, 84, 84)
-script = ExtResource("2_nxvpl")
-name = ""
-id = 1
-metadata/_custom_type_script = "uid://bwjw4y67581ke"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dewlx"]
-atlas = ExtResource("3_dewlx")
-region = Rect2(10, 22.5, 77, 79)
-script = ExtResource("2_nxvpl")
-name = ""
-id = 2
-metadata/_custom_type_script = "uid://bwjw4y67581ke"
+[ext_resource type="PackedScene" uid="uid://dhvecj144jji0" path="res://Scenes/hotbar.tscn" id="1_w371h"]
 
 [node name="UI" type="CanvasLayer"]
 layer = 10
-
-[node name="SelectionWheel" parent="." instance=ExtResource("1_w371h")]
-bkg_color = Color(0.172549, 0.172549, 0.172549, 1)
-line_color = Color(0.71213, 0.712129, 0.712129, 1)
-options = Array[ExtResource("2_nxvpl")]([SubResource("AtlasTexture_hfhsn"), SubResource("AtlasTexture_dewlx")])
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(0, 50)
 anchor_mode = 0
 ignore_rotation = false
+
+[node name="Hotbar" parent="." instance=ExtResource("1_w371h")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 524.0
+offset_top = -298.0
+offset_right = 524.0
+offset_bottom = -298.0
+grow_horizontal = 2
+grow_vertical = 0

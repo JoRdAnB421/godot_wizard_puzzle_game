@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://csvckklealkdb"]
+
+[ext_resource type="Script" uid="uid://c5keled2m5aqq" path="res://Scripts/slot.gd" id="1_12ej0"]
+[ext_resource type="Texture2D" uid="uid://c7a73nioscel4" path="res://Art/spell_symbols.png" id="1_luhj6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_luhj6"]
+atlas = ExtResource("1_luhj6")
+region = Rect2(12, 31.5, 76, 71)
+
+[node name="Slot" type="Panel"]
+custom_minimum_size = Vector2(60, 60)
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_12ej0")
+
+[node name="SpellStored" type="Sprite2D" parent="."]
+position = Vector2(31, 33)
+scale = Vector2(0.710526, 0.746479)
+texture = SubResource("AtlasTexture_luhj6")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 44.0
+offset_top = -1.0
+offset_right = 58.0
+offset_bottom = 16.0
+theme_override_font_sizes/font_size = 12
+text = "99"
+horizontal_alignment = 2
+
+[node name="Sweep" type="TextureProgressBar" parent="."]
+modulate = Color(1, 1, 1, 0.7137255)
+layout_mode = 0
+offset_right = 60.0
+offset_bottom = 60.0
+fill_mode = 3
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true

@@ -1,8 +1,15 @@
 extends Node
 
 @onready var known_spells: Array[SpellOption] = []
+@onready var spells_locked = false
+
+signal num_spells_changed
+signal cast_spell_signal
+signal spell_finished
 
 func _ready() -> void:
+	cast_spell_signal.connect(_lock_spells)
+	spell_finished.connect(_unlock_spells)
 	add_spell("rotate_clockwise", 1, Rect2(10.0, 22.5, 77.0, 79.0))
 	add_spell("rotate_anticlockwise", 2, Rect2(85.0, 22.5, 84.0,84.0))
 
@@ -18,21 +25,37 @@ func add_spell(spell_name:String, spell_id:int, region:Rect2) -> void:
 	new_spell.region = region
 	
 	known_spells.append(new_spell)
+	num_spells_changed.emit()
 	
-
 ## Below we store the functions for the spells
 
-func cast_spell(spell_id: int) -> void:
+func cast_spell(spell_id: int, spells_locked: bool = spells_locked) -> void:
+	if spells_locked:
+		print("Spells locked")
+		return
+		
+	cast_spell_signal.emit()
 	match spell_id:
 		1: rotate_room(-1) # Anti-clockwise
 		2: rotate_room(1)  # Clockwise
-
+	
 func rotate_room(direction: float) -> void:
 	"""Attempt to have room rotate smoothly whilst freezing the player in 
 	place
 	"""
+	
 	var main_scene = Global.current_scene.get_child(-1)
 	var goal_angle = main_scene.rotation + PI/2 * direction
 	var tween = main_scene.create_tween()
 	tween.tween_property(main_scene, "rotation", 
-						 goal_angle, 0.75)
+						 goal_angle,5)
+	# Wait for tween to finish before emitting signal
+	tween.finished.connect(func():
+		spell_finished.emit()
+	)
+
+func _lock_spells():
+	spells_locked=true
+	
+func  _unlock_spells():
+	spells_locked=false
