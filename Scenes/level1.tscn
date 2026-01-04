@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=4 uid="uid://dhbdk4326770t"]
+[gd_scene load_steps=10 format=4 uid="uid://dhbdk4326770t"]
 
 [ext_resource type="PackedScene" uid="uid://s8ocfyx8kqrl" path="res://Scenes/player.tscn" id="1_c5erv"]
 [ext_resource type="Texture2D" uid="uid://cdsuuj1j1p1wj" path="res://Tilemaps/roguelikeDungeon_transparent.png" id="2_lyd6k"]
 [ext_resource type="PackedScene" uid="uid://b3jg7ktpfx6yx" path="res://Scenes/box.tscn" id="3_y4dr7"]
 [ext_resource type="PackedScene" uid="uid://cr0b1w0k5dfe2" path="res://Scenes/UI.tscn" id="4_lyd6k"]
 [ext_resource type="PackedScene" uid="uid://cbwy3iitbvkak" path="res://Scenes/spell_pickup.tscn" id="5_y4dr7"]
+[ext_resource type="Texture2D" uid="uid://c7a73nioscel4" path="res://Art/spell_symbols.png" id="6_didp7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jv6wh"]
 texture = ExtResource("2_lyd6k")
@@ -190,6 +191,10 @@ separation = Vector2i(1, 1)
 physics_layer_0/collision_layer = 2
 sources/0 = SubResource("TileSetAtlasSource_jv6wh")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4dr7"]
+atlas = ExtResource("6_didp7")
+region = Rect2(180, 9.5, 62, 114)
+
 [node name="Level1" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -208,7 +213,6 @@ follow_viewport_enabled = true
 [node name="Player" parent="." instance=ExtResource("1_c5erv")]
 position = Vector2(388, 316)
 collision_layer = 3
-slide_on_ceiling = false
 platform_on_leave = 2
 
 [node name="Objects" type="Control" parent="."]
@@ -222,7 +226,6 @@ pivot_offset = Vector2(575, 324)
 position = Vector2(783, 279)
 collision_layer = 2
 collision_mask = 3
-slide_on_ceiling = false
 platform_on_leave = 2
 
 [node name="TileMapLayer" type="TileMapLayer" parent="Objects"]
@@ -231,5 +234,9 @@ tile_set = SubResource("TileSet_x6ack")
 use_kinematic_bodies = true
 
 [node name="SpellPickup" parent="Objects" instance=ExtResource("5_y4dr7")]
-position = Vector2(560, 432)
+position = Vector2(678, 420)
 spell_name = "Fireball"
+spell_texture = SubResource("AtlasTexture_y4dr7")
+
+[node name="SpellPickup2" parent="Objects" instance=ExtResource("5_y4dr7")]
+position = Vector2(567, 420)

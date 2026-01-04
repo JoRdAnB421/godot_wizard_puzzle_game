@@ -11,14 +11,13 @@ anchor_mode = 0
 ignore_rotation = false
 
 [node name="Hotbar" parent="." instance=ExtResource("1_w371h")]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 524.0
-offset_top = -298.0
-offset_right = 524.0
-offset_bottom = -298.0
-grow_horizontal = 2
-grow_vertical = 0
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -52.0
+offset_right = -52.0
+offset_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 2

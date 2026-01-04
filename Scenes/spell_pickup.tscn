@@ -5,7 +5,7 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2jvhj"]
 atlas = ExtResource("1_sehmb")
-region = Rect2(269, 0, 77, 121.5)
+region = Rect2(268, 0, 78, 128)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wwylm"]
 size = Vector2(74, 114)
@@ -14,11 +14,11 @@ size = Vector2(74, 114)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_2jvhj")
+spell_texture = SubResource("AtlasTexture_2jvhj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -3)
 scale = Vector2(0.5, 0.453125)
-texture = SubResource("AtlasTexture_2jvhj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -2.5)

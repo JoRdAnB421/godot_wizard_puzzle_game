@@ -3,9 +3,11 @@ extends Area2D
 @export var spell_name: String
 @export var spell_id: int
 @export var spell_region: Vector2
+@export var spell_texture: AtlasTexture
 
 func _ready() -> void:
 	connect("body_entered", _add_spell)
+	$Sprite2D.texture = spell_texture
 
 func _add_spell(_sig) -> void:
 	"""Adds new spell to wheel"""
@@ -14,6 +16,7 @@ func _add_spell(_sig) -> void:
 	#fire_spell.atlas = load("res://Art/spell_symbols.png")
 	#fire_spell.region = Rect2(180.0, 0.0, 76.0, 122.5)
 	#PlayerState.known_spells.append(fire_spell)
-	PlayerState.add_spell("Fireball!", 3, Rect2(180.0, 0.0, 76.0, 122.5))
+	#Rect2(180.0, 0.0, 76.0, 122.5)
+	PlayerState.add_spell("Fireball!", 3, spell_texture.region)
 	queue_free()
 	

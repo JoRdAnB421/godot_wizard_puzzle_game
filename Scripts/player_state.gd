@@ -2,7 +2,7 @@ extends Node
 
 @onready var known_spells: Array[SpellOption] = []
 @onready var spells_locked = false
-
+@onready var spell_speed = 1 # How fast the effects of the spell are seen 
 signal num_spells_changed
 signal cast_spell_signal
 signal spell_finished
@@ -48,7 +48,7 @@ func rotate_room(direction: float) -> void:
 	var goal_angle = main_scene.rotation + PI/2 * direction
 	var tween = main_scene.create_tween()
 	tween.tween_property(main_scene, "rotation", 
-						 goal_angle,5)
+						 goal_angle,spell_speed)
 	# Wait for tween to finish before emitting signal
 	tween.finished.connect(func():
 		spell_finished.emit()
