@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://03vmmq4a6gq8"]
+
+[ext_resource type="Script" uid="uid://bo673y8r46fvu" path="res://Scripts/success_layer.gd" id="1_xktjs"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+process_mode = 2
+script = ExtResource("1_xktjs")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/mono_font_size = 1
+bbcode_enabled = true
+text = "[b]You escaped![/b]
+Press [space] to delve deeper..."
+horizontal_alignment = 1
+vertical_alignment = 1

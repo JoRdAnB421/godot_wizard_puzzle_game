@@ -1,6 +1,7 @@
 extends Node
 
 @onready var current_scene = get_tree().current_scene
+@onready var success_screen = preload("res://Scenes/success_layer.tscn")
 
 func goto_scene(path):
 	"""Changes to a given scene based on path but need to make sure that we 
@@ -8,6 +9,7 @@ func goto_scene(path):
 	scene loading
 	"""
 	_deferred_goto_scene.call_deferred(path)
+	get_tree().paused = false
 	
 func _deferred_goto_scene(path):
 	# Now safe to remove current scene
@@ -21,3 +23,9 @@ func _deferred_goto_scene(path):
 	
 	# Add it to the active scene, as a child of the root
 	get_tree().root.add_child(current_scene)
+
+func _level_win() -> void:
+	get_tree().paused = true
+	var win_screen = success_screen.instantiate()
+	current_scene.add_child(win_screen)
+	

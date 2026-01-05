@@ -1,0 +1,5 @@
+extends CanvasLayer
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_accept"):
+		Global.goto_scene("res://Scenes/main_menu.tscn")

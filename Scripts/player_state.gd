@@ -43,7 +43,6 @@ func rotate_room(direction: float) -> void:
 	"""Attempt to have room rotate smoothly whilst freezing the player in 
 	place
 	"""
-	
 	var main_scene = Global.current_scene.get_child(-1)
 	var goal_angle = main_scene.rotation + PI/2 * direction
 	var tween = main_scene.create_tween()
