@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bjvnda26vq7w2" path="res://Art/player_forward.png" id="1_rpqav"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kyqiw"]
-size = Vector2(79, 130)
+size = Vector2(74, 103)
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(0.5, 0.5)
@@ -17,5 +17,5 @@ jump_speed = -400
 texture = ExtResource("1_rpqav")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-4.5, 0)
+position = Vector2(-5, 13.5)
 shape = SubResource("RectangleShape2D_kyqiw")

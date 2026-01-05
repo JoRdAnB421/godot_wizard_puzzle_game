@@ -11,7 +11,7 @@ func _ready() -> void:
 	cast_spell_signal.connect(_lock_spells)
 	spell_finished.connect(_unlock_spells)
 	add_spell("rotate_clockwise", 1, Rect2(10.0, 22.5, 77.0, 79.0))
-	add_spell("rotate_anticlockwise", 2, Rect2(85.0, 22.5, 84.0,84.0))
+	#add_spell("rotate_anticlockwise", 2, Rect2(85.0, 22.5, 84.0,84.0))
 
 func _get_known_spells() -> Array[SpellOption]:
 	"""Returns a list of currently known spells with atlas texture"""

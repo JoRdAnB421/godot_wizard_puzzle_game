@@ -28,6 +28,10 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _process(_delta: float) -> void:
-	for i in range(1,6):
+	var num_spells = len(PlayerState.known_spells)
+	for i in range(1,num_spells+1):
 		if Input.is_action_just_pressed("cast_spell_%d" % i):
 			PlayerState.cast_spell(i)
+	
+	if Input.is_action_just_pressed("restart"):
+		Global.restart_level()

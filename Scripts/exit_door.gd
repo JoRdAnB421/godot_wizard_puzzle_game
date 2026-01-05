@@ -6,5 +6,6 @@ func _ready() -> void:
 func _on_area_entered(body) -> void:
 	if body.is_in_group("player"):
 		print("You win!")
+		PlayerState._unlock_spells()
 		Global._level_win()
 	
